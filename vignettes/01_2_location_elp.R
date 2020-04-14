@@ -1,8 +1,8 @@
 rm(list=ls())
 setwd("~/hdeeg")
 library(eeguana)
+library(eegusta)
 
-source("./functions/read_elp.R")
 
 files=dir("./data_bdf",full.names = TRUE,pattern = "elp$")
 

@@ -7,5 +7,4 @@ Maintainer: Livio Finos <livio.finos@unipd.it>
 Description: EEGUana+STAtistics: eeguana-based tools for statistical analysis of eegdata.
 Encoding: UTF-8
 License: GPL-2
-RoxygenNote: 6.1.1
- 
+RoxygenNote: 7.1.0

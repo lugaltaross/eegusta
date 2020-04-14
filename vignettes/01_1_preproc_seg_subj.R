@@ -6,10 +6,11 @@ setwd("~/hdeeg")
 library(dplyr)
 library(eeguana)
 library(parallel)
-source("./functions/preproc_subj.R")
+devtools::install("~/eegusta/")
+library(eegusta)
 
 files=dir("./data_bdf",full.names = TRUE,pattern = "bdf$")
 
 # preproc_subj(files[14])
-mclapply(1:length(files), function(i)preproc_subj(files[i]), mc.cores = min(6,length(files)))
+mclapply(1:length(files), function(i)preproc_subj(files[i]), mc.cores = min(7,length(files)))
 
