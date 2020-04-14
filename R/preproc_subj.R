@@ -1,3 +1,4 @@
+#' @export
 preproc_subj <- function (file_name,overwrite=FALSE,freq = c(1, 40)){
   # require(dplyr)
   cat("\n Preprocessing: ",file_name,"\n")
@@ -95,17 +96,17 @@ preproc_subj <- function (file_name,overwrite=FALSE,freq = c(1, 40)){
   #   theme(legend.position = "bottom")
   # 
   # 
-  # ######## mean
-  # D=Dsegs%>%group_by(.sample,condition)%>%summarize_all(mean, na.rm = TRUE) 
-  # # dim(D$.signal)
-  # save(file=paste(dir_out,paste0(file_out[1],"_seg_mean.Rdata"),sep="/"),D)
-  # 
-  # 
-  # 
-  # ######## median
-  # D=Dsegs%>%group_by(.sample,condition)%>%summarize_all(median, na.rm = TRUE) 
-  # # dim(D$.signal)
-  # save(file=paste(dir_out,paste0(file_out[1],"_seg_median.Rdata"),sep="/"),D)
+  ######## mean
+  D=Dsegs%>%group_by(.sample,condition)%>%summarize_all(mean, na.rm = TRUE)
+  # dim(D$.signal)
+  save(file=paste(dir_out,paste0(file_out[1],"_seg_mean.Rdata"),sep="/"),D)
 
+
+
+  ######## median
+  D=Dsegs%>%group_by(.sample,condition)%>%summarize_all(median, na.rm = TRUE)
+  # dim(D$.signal)
+  save(file=paste(dir_out,paste0(file_out[1],"_seg_median.Rdata"),sep="/"),D)
+  
   return(TRUE)
 }

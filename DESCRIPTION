@@ -1,0 +1,11 @@
+Package: eegusta
+Version: 1.0.0
+Date: 2020-04-17
+Title: EEGUana+STAtistics: eeguana-based tools for statistical analysis of eegdata 
+Author: Livio Finos, for the time being
+Maintainer: Livio Finos <livio.finos@unipd.it>
+Description: EEGUana+STAtistics: eeguana-based tools for statistical analysis of eegdata.
+Encoding: UTF-8
+License: GPL-2
+RoxygenNote: 6.1.1
+ 
