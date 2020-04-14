@@ -8,8 +8,8 @@ library(eegusta)
 load("locations_eeguana.Rdata")
 
 
-# debug(make_sample)
+# undebug(make_sample)
 make_sample(file_dir = "./data_bdf",
                         files = "sub.._seg\\.Rdata",
-                        stat_summ = "mean",
+                        stat_summ = "median",
                         location = LOC)

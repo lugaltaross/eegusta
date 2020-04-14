@@ -9,7 +9,7 @@ make_sample <- function(file_dir="./data_bdf",
   ########
   get_summary <- function(file_name_set,stat_summ_name,overwrite){
     temp=strsplit(file_name_set,"\\.")[[1]]
-    file_name_summary=paste0(paste0(collapse ="", temp[-length(temp)]),"_",stat_summ_name,"\\.",temp[length(temp)])
+    file_name_summary=paste0(paste0(collapse =".", temp[-length(temp)]),"_",stat_summ_name,".",temp[length(temp)])
     
     
     ####load file done or compute the summary

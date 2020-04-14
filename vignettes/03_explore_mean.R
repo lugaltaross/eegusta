@@ -5,10 +5,34 @@ library(eeguana)
 library(plyr)
 library(dplyr)
 library(ggplot2)
-source('./functions/t_test_light.R', echo=TRUE)
+library(r41sqrt10)
+r41sqrt10:::t.test.light
 
-load("data_seg_median_sample.Rdata")
+files=c("data_seg_mean_sample_avepot5_15.Rdata",
+        "data_seg_median_sample_avepot5_15.Rdata",
+        # "data_seg_mean_sample_avepot7_15.Rdata",
+        # "data_seg_median_sample_avepot7_15.Rdata",
+        "data_seg_mean_sample_avepot15.5_18.5.Rdata",
+        "data_seg_median_sample_avepot15.5_18.5.Rdata",
+        "data_seg_mean_sample_avepot16_18.Rdata",
+        "data_seg_median_sample_avepot16_18.Rdata",
+        "data_seg_mean_sample_avepot14_20.Rdata",
+        "data_seg_median_sample_avepot14_20.Rdata")
+file=files[2]
+for(file in files){
+  load(file)
+  
+  Y=as.matrix(D$.signal[(1:32),,with=TRUE])-
+    as.matrix(D$.signal[(33:64),,with=TRUE])
+  res=r41sqrt10:::t.test.light(Y[,-(1:2)],tail=0)
+  print(min(res$p,na.rm = TRUE))
+  print(min(p.adjust(na.omit(res$p),method = "BH")))
+  
+}
 
+
+data_seg=D
+D$.segments
 Y=as.matrix(data_seg$.signal[(1:32)*2,,with=TRUE])-
   as.matrix(data_seg$.signal[(1:32)*2-1,,with=TRUE])
 res=t.test.light(Y[,-(1:2)],tail=0)

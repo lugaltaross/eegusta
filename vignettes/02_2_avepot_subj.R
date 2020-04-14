@@ -7,10 +7,8 @@ setwd('C:/Users/livio/Dropbox (unipd)/dataset/hdeeg_emotion')
 # remotes::install_github("bnicenboim/eeguana@experimental")
 library(dplyr)
 library(eeguana)
-library(parallel)
-source("./functions/preproc_subj_avepot.R")
 
-range_s=c(.155, .185)
+range_s=c(.05, .15)
 file_name="data_seg_median_sample.Rdata"
 
 file_out=strsplit(file_name,"\\.")[[1]]
