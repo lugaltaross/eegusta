@@ -7,23 +7,26 @@
 # left_join(layout_32_1020)
 
 read_elp <- function(file){
+  #input: string with the path of the file 
+  #example: "data/channel_locations14.elp"
   loc <- readr::read_csv(file,comment = "//")
   loc=as.data.frame(loc)
   
-  loc=loc[-(1:(grep("%S",loc[,1])[1]-1)),]
+  loc=loc[-(1:(grep("%S",loc[,1])[1]-1)),] #remove header of the file
   loc=matrix(loc,byrow = TRUE,ncol = 3)
 #  str(loc)
   
   loc=loc[,2:3]
   
-  loc[,1]=gsub("%N","",loc[,1])
+  loc[,1]=gsub("%N","",loc[,1]) 
   loc[,1]=gsub("\\t","",loc[,1])
   
   temp=matrix(as.numeric(unlist(strsplit(loc[,2],"\\t"))),byrow = TRUE,ncol=3)
   temp=data.frame(temp)
   temp=temp[,c(2,1,3)]
   loc=data.frame(loc[,1],as.numeric(NA),as.numeric(NA),as.numeric(NA),temp)
-  names(loc)=c(".channel","radius","theta","phi",".x",".y",".z")
+  names(loc)=c(".channel","radius","theta","phi",".y",".x",".z") #swap x and y for visualization
+  loc = loc %>% select(.channel, radius, theta, phi, .x, .y, .z) #reorder location (x, y, z)
   loc=tibble::as_tibble(loc)
   return(loc)
 }
